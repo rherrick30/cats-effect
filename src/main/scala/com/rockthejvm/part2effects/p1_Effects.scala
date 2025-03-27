@@ -5,7 +5,7 @@ import scala.concurrent.{ExecutionContext, Future}
 import java.time.LocalDateTime
 
 
-object Effects extends App {
+object p1_Effects extends App {
 
   // pure functional programming
   // substitution
@@ -37,7 +37,7 @@ object Effects extends App {
   // Example: Option
   /*
    - describes a possibly absent value
-   - describes the type of A if it exists
+   - computes a value of type of 'A', if it exists
    - construction of an Option requires no side effects
   THUS: Option is an Effect type
   * */
@@ -45,9 +45,9 @@ object Effects extends App {
 
   // Example: Future
   /*
-   - describes an asynchronous calculation that will be peformed somethime in the future
-   - computes a value of type A it its successful
-   - side effects ARE needed (you need a thread on a execution context)
+   - describes an asynchronous calculation that will be performed sometime in the future
+   - computes a value of type A if it's successful
+   - side effects ARE needed (you need a thread on an execution context)
    and execution is not separate from construction
   THUS: Future is NOT an effect type
    */
@@ -60,7 +60,7 @@ object Effects extends App {
     - If successful a value of A will be produced if necessary
     - MyIO requires side effect only in the evaluation of () => A and if
     side effects are needed they are NOT produced (triggered) in the creation of MyIO
-  THUS:  This is an effect type.  In fact its the most general effect type imaginable!
+  THUS:  This is an effect type.  In fact, it's the most general effect type imaginable!
   */
    case class MyIO[A](unsafeRun: () => A){
     def map[B](f: A => B) : MyIO[B] = MyIO(() => f(unsafeRun()))
@@ -71,7 +71,7 @@ object Effects extends App {
     println("I am writing something") // not triggered
     42
   })
-  myIO.unsafeRun() // NOW...its triggered
+  myIO.unsafeRun() // NOW...it's triggered
 
 
   /*
@@ -121,7 +121,7 @@ object Effects extends App {
 
   val howLongWasIt = measure[String](LONG_TASK)
   println(s"The long task took ${howLongWasIt.unsafeRun()} millis")
-  println(s"now its ${clock.unsafeRun()} millis")
+  println(s"now it's ${clock.unsafeRun()} millis")
 
   printSomethang("something")
   val derNamen = readSomething.unsafeRun()

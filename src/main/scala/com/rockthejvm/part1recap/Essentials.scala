@@ -6,7 +6,7 @@ import scala.util.{Failure, Success}
 
 object Essentials {
 
-  // I skipped most of this as its pretty basic
+  // I skipped most of this as it's pretty basic
 
   // Futures
   val tp = Executors.newFixedThreadPool(8)

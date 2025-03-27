@@ -7,7 +7,7 @@ import cats.syntax.apply.*
 
 import com.rockthejvm.utils.*
 
-object IOParallelism extends IOApp.Simple {
+object p5_IOParallelism extends IOApp.Simple {
 
   // IOs are usually sequential
   val aniIO = IO(s"[${Thread.currentThread().getName}] Ani")

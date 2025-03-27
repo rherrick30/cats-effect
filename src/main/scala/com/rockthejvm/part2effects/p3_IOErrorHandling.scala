@@ -7,7 +7,7 @@ import java.util.concurrent.Executors
 import scala.concurrent.{ExecutionContext, Future}
 import scala.util.{Failure, Success, Try}
 
-object IOErrorHandling extends App {
+object p3_IOErrorHandling extends App {
   given ex: ExecutionContext = ExecutionContext.fromExecutorService(Executors.newFixedThreadPool(8))
 
   // IO: pure, delay, defer
@@ -45,7 +45,7 @@ object IOErrorHandling extends App {
 
   // 1 - construct potentially failed IOs from standard data types:  Option, Try, Either
   def option2IO[A](option: Option[A])(ifEmpty: Throwable) : IO[A] = option match
-    case Some(value) => IO.pure(value)  // DONT NEED PURE, but its an option in this case
+    case Some(value) => IO.pure(value)  // DON'T NEED PURE, but it's an option in this case
     case None => IO.raiseError(ifEmpty)
 
   def tryToIO[A](aTry: Try[A]) : IO[A] = aTry match {

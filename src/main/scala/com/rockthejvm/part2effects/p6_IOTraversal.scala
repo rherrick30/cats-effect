@@ -7,7 +7,7 @@ import scala.util.Random
 import cats.effect.IO
 import com.rockthejvm.utils.*
 
-object IOTraversal extends IOApp.Simple {
+object p6_IOTraversal extends IOApp.Simple {
   given ec : ExecutionContext = ExecutionContext.fromExecutorService(Executors.newFixedThreadPool(8))
 
   def heavyComputation(string: String) : Future[Int] = Future {
@@ -68,6 +68,5 @@ object IOTraversal extends IOApp.Simple {
 
 
   override def run =
-    //singleIO.map(_.sum).debug.void
-    parallelSingleIO.map(_.sum).debug.void
+    singleIO.map(_.sum).debug.void >> IO.println("now parallel") >> parallelSingleIO.map(_.sum).debug.void
 }

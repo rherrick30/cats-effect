@@ -5,7 +5,7 @@ import cats.effect.IO
 import java.sql.Date
 import scala.io.StdIn
 
-object IOIntroduction extends App {
+object p2_IOIntroduction extends App {
 
   // IO
   val ourFirstIO: IO[Int] = IO.pure(42) // arg should not have side effects

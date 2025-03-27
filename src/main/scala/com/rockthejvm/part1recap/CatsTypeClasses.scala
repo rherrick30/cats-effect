@@ -55,7 +55,7 @@ object CatsTypeClasses extends App {
   }
   import cats.Monad
   val monadList = Monad[List]
-  // no implicits necessary as the only ones there are are imported w/ FlatMap and Applucative
+  // no implicits necessary as the only ones there are imported w/ FlatMap and Applicative
   def crossProduct_v2[F[_]: Monad, A, B](fa: F[A], fb: F[B]) = for {
     a <- fa
     b <- fb
