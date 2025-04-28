@@ -27,7 +27,7 @@ abstract class Mutex {
 //}
 
 
-object MutexConcurrencyProblems {
+object MutexWithConcurrencyProblems {
   type Signal = Deferred[IO, Unit]
   case class State(locked: Boolean, waiting: Queue[Signal])
 
